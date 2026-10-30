@@ -1,0 +1,132 @@
+#header {
+  width: 100%;
+  position: fixed;
+  left: 0;
+  top: 0;
+  z-index: 1000;
+}
+.header_inner {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1rem;
+  background-color: rgba(129, 133, 139, 0.158);
+  backdrop-filter: blur(15px);
+}
+
+.header_logo {
+  font-size: 0.9rem;
+
+  text-transform: uppercase;
+  text-align: center;
+  line-height: 1;
+}
+.header_logo h1 {
+  font-weight: 500;
+}
+.header_logo em {
+  font-size: 12px;
+  display: block;
+}
+.header_nav {
+}
+.header_nav ul {
+  display: flex;
+}
+.header_nav ul li {
+}
+.header_nav ul li a {
+  display: inline-block;
+  font-size: 14px;
+  text-transform: uppercase;
+  padding: 14px;
+  position: relative;
+}
+.header_nav ul li a::before {
+  content: "";
+  width: calc(100% - 28px);
+  height: 1px;
+  background-color: var(--black);
+  position: absolute;
+  left: 14px;
+  bottom: 0;
+  transform: scale(0);
+  transition: transform 0.3s;
+}
+.header_nav ul li a:hover::before {
+  transform: scale(1);
+}
+
+.header_nav_mobile {
+  width: 40px;
+  height: 40px;
+  cursor: pointer;
+  display: none;
+}
+.header_nav_mobile span {
+  display: block;
+  width: 40px;
+  height: 2px;
+  background-color: var(--black);
+  margin-top: 19px;
+  position: relative;
+}
+.header_nav_mobile span::before {
+  content: "";
+  width: 40px;
+  height: 2px;
+  background-color: var(--black);
+  position: absolute;
+  right: 0;
+  top: 6px;
+  transition: width 0.3s;
+}
+.header_nav_mobile span::after {
+  content: "";
+  width: 40px;
+  height: 2px;
+  background-color: var(--black);
+  position: absolute;
+  left: 0;
+  bottom: 6px;
+  transition: width 0.3s;
+}
+
+@media (max-width: 800px) {
+  .header_nav_mobile {
+    display: block;
+  }
+  .header_nav {
+    display: none;
+  }
+  .header_nav.show {
+    display: block;
+  }
+  .header_nav.show ul {
+    flex-direction: column;
+    position: absolute;
+    right: 0;
+    top: 68px;
+
+    background-color: rgba(130, 145, 167, 0.808);
+    padding: 20px 14px 20px 26px;
+  }
+  .header_nav.show ul li {
+    text-align: right;
+  }
+  .header_nav.show ul li a {
+    padding: 14px 0;
+  }
+  .header_nav.show ul li a::before {
+    width: 100%;
+    left: 0px;
+  }
+
+  .header_nav.show + .header_nav_mobile span::before {
+    width: 20px;
+  }
+  .header_nav.show + .header_nav_mobile span::after {
+    width: 20px;
+  }
+}
